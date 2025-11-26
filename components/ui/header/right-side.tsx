@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import {
   Select,
@@ -8,20 +9,23 @@ import {
 } from "@/components/ui/select"
 import { AvatarFallback } from '@radix-ui/react-avatar'
 import { Avatar,AvatarImage } from '../avatar'
+import { useViewStore } from "@/lib/store";
 
 const HeaderRight = () => {
+    const { setView } = useViewStore();
   return (
     <div className='flex items-center space-x-4'>
-   <Select>
-  <SelectTrigger className="w-24 focus-visible:outline-none focus">
+   <Select onValueChange={(v) => setView(v)}>
+  <SelectTrigger className="w-24 focus-visible:outline-none">
     <SelectValue placeholder="Month" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="light">Month</SelectItem>
-    <SelectItem value="dark">Week</SelectItem>
-    <SelectItem value="system">Day</SelectItem>
+    <SelectItem value="month">Month</SelectItem>
+    <SelectItem value="week">Week</SelectItem>
+    <SelectItem value="day">Day</SelectItem>
   </SelectContent>
 </Select>
+
 
 <Avatar>
     <AvatarImage src="/img/inst2.png" />
