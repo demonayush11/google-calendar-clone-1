@@ -1,11 +1,10 @@
-"use client";
 import { getHours, getWeekDays } from "@/lib/getTime";
 import { useDateStore, useEventStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
-import { ScrollArea } from "./scroll-area";
-import { EventRenderer } from "./event-renderer";
+import { ScrollArea } from "./ui/scroll-area";
+import { EventRenderer } from "./ui/event-renderer";
 
 
 export default function WeekView() {
@@ -17,7 +16,7 @@ export default function WeekView() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(dayjs());
-    }, 60000); // Update every minute
+    }, 60000); 
     return () => clearInterval(interval);
   }, []);
 
@@ -30,7 +29,6 @@ export default function WeekView() {
           </div>
         </div>
 
-        {/* Week View Header */}
 
         {getWeekDays(userSelectedDate).map(({ currentDate, today }, index) => (
           <div key={index} className="flex flex-col items-center">
@@ -49,8 +47,6 @@ export default function WeekView() {
         ))}
       </div>
 
-      {/* Time Column & Corresponding Boxes of time per each date  */}
-
       <ScrollArea className="h-[70vh]">
         <div className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr] px-4 py-2">
           {/* Time Column */}
@@ -63,8 +59,6 @@ export default function WeekView() {
               </div>
             ))}
           </div>
-
-          {/* Week Days Corresponding Boxes */}
 
           {getWeekDays(userSelectedDate).map(
             ({ isCurrentDay, today }, index) => {
@@ -90,7 +84,6 @@ export default function WeekView() {
                       />
                     </div>
                   ))}
-                  {/* Current time indicator */}
 
                   {isCurrentDay(dayDate) && today && (
                     <div

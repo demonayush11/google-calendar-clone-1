@@ -19,7 +19,7 @@ interface DateStoreType {
 export type CalendarEventType = {
   id: string;
   title: string;
-  date: string;       // ✅ change this line
+  date: string;       
   description: string;
 };
 type EventStore = {

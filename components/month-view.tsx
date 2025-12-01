@@ -2,7 +2,7 @@
 
 
 import React, { Fragment } from 'react'
-import MonthViewBox from './ui/month-view-box'
+import MonthViewBox from './month-view-box'
 import { useDateStore } from '@/lib/store';
 
 export default function MonthView() {
